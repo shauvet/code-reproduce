@@ -1,0 +1,46 @@
+@import "basic";
+@import "vars";
+
+:global {
+  .skinMeta_1{
+    // 覆盖布局部分
+    .layout {
+      .main{
+        .container{
+          margin: 12px;
+        }
+      }
+    }
+
+    //列表页共用样式
+    .public_listMain {
+      .listSearchBox {
+        margin-bottom: 12px;
+      }
+    }
+
+    // 编辑页共用样式
+    .public_editMain {
+      .groupTitle{
+        padding: 0 0 15px 0;
+        color: #C83545;
+        font-size: 14px;
+        font-weight: bolder;
+        transition: background-color .4s;
+      }
+      .buttonCenter{
+        text-align: center;
+      }
+    }
+
+    // 选项卡
+    .ant-tabs-bar {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .ant-select-selection{
+      border-radius: 0;
+    }
+  }
+}
