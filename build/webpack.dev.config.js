@@ -9,15 +9,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: "development",
   devtool: "cheap-source-map",
-  entry: {
-    index: "./src/index.js",
-  },
+  entry: './src/index.js',
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "[name].js",
+    filename: "index.[hash:8].js",
+    path: path.join(__dirname, "../dist"),
   },
   devServer: {
-    contentBase: "./dist",
+    contentBase: path.join(__dirname, '../dist'),
     hot: true,
     compress: true,
     port: 8080,
@@ -83,20 +81,27 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'ENV': require('../config/dev.env')
+    }),
     new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'index.[hash:8].css',
+      chunkFilename: '[id].css'
+    }),
     new HtmlWebpackPlugin({
+      title: 'admin',
       template: path.join(__dirname, "../src/index.html"),
-      filename: "index.html",
-      chunks: ["index"],
+      // chunks: ['index'],
       inject: true,
-      minify: {
-        html5: true,
-        collapseWhitespace: true,
-        preserveLineBreaks: false,
-        minifyCSS: true,
-        minifyJS: true,
-        removeComments: false,
-      },
+      // minify: {
+      //   html5: true,
+      //   collapseWhitespace: true,
+      //   preserveLineBreaks: false,
+      //   minifyCSS: true,
+      //   minifyJS: true,
+      //   removeComments: false,
+      // },
     }),
     new FriendlyWebpackPlugin(),
   ],

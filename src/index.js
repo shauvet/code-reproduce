@@ -1,9 +1,9 @@
 /*
  * @Date: 2020-04-10 15:07:19
  * @LastEditors: guangling
- * @LastEditTime: 2020-05-01 23:05:10
+ * @LastEditTime: 2020-05-29 15:30:33
  */
-import './index.html'
+// import './index.html'
 import 'babel-polyfill'
 import dva from 'dva'
 import createLoading from 'dva-loading'
